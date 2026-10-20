@@ -1,4 +1,4 @@
-/* Wealthy Creatives lesson pages. wc.css v0.2 (pilot, 2026-10-20)
+/* Wealthy Creatives lesson pages. wc.css v0.3 (2026-10-20)
    Brand: v1.5 "Marked Up" colours. Type picked by Jonathan 2026-10-20: Inter body and section headings, Instrument Serif
    on the lesson headline and closing line with one punch word in Inter Black Italic,
    Clash Display caps labels, Cousine caps tags.
@@ -84,17 +84,13 @@
 .wc-hand{font-family:var(--hand); font-weight:700; font-size:34px; line-height:1.15; display:inline-block; transform:rotate(-2deg); margin:8px 0 0;}
 .wc-sec--ink .wc-hand{color:var(--white);}
 
-/* Motion. Traces on in his drawing direction. Off entirely for reduced motion. */
+/* Motion. Only the hero animates, once, on load: the swipe traces on in his drawing direction.
+   Marks further down are already drawn when you reach them. (v0.2 tied them to scroll position,
+   so they stalled half drawn whenever the reader stopped scrolling.) Off for reduced motion. */
 @media (prefers-reduced-motion:no-preference){
-  .wc-hl{background-size:0% 46%, 0% 84%; animation:wc-swipe .8s var(--ease) .35s forwards;}
-  .wc-circled path{stroke-dasharray:1; stroke-dashoffset:1; animation:wc-draw .9s var(--ease) .6s forwards;}
-  .wc-strike::after{transform-origin:left; transform:rotate(-2deg) scaleX(0); animation:wc-strike .5s var(--ease) .5s forwards;}
-  .wc-hero .wc-hl{animation-delay:.55s;}
-  @supports (animation-timeline:view()){
-    .wc-sec:not(.wc-hero) .wc-hl,
-    .wc-sec:not(.wc-hero) .wc-circled path,
-    .wc-sec:not(.wc-hero) .wc-strike::after{animation-timeline:view(); animation-range:entry 30% cover 42%; animation-delay:0s; animation-duration:auto;}
-  }
+  .wc-hero .wc-hl{background-size:0% 46%, 0% 84%; animation:wc-swipe .8s var(--ease) .55s forwards;}
+  .wc-hero .wc-circled path{stroke-dasharray:1; stroke-dashoffset:1; animation:wc-draw .9s var(--ease) .6s forwards;}
+  .wc-hero .wc-strike::after{transform-origin:left; transform:rotate(-2deg) scaleX(0); animation:wc-strike .5s var(--ease) .5s forwards;}
 }
 @keyframes wc-swipe{to{background-size:100% 46%, 100% 84%;}}
 @keyframes wc-draw{to{stroke-dashoffset:0;}}
