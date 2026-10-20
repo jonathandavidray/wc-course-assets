@@ -1,0 +1,183 @@
+/* Wealthy Creatives lesson pages. wc.css v0.2 (pilot, 2026-10-20)
+   Brand: v1.5 "Marked Up" colours. Type picked by Jonathan 2026-10-20: Inter body and section headings, Instrument Serif
+   on the lesson headline and closing line with one punch word in Inter Black Italic,
+   Clash Display caps labels, Cousine caps tags.
+   Caveat for the one hand line until Jonathan Hand exists.
+   Everything is scoped under .wc so nothing leaks into Kajabi's own chrome.
+   Every class starts with wc- so Kajabi's Bootstrap can't collide with it. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..900;1,14..32,700..900&family=Caveat:wght@700&family=Instrument+Serif:ital@0;1&family=Cousine:wght@700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@600&display=swap");
+
+/* ---------- Kajabi layout fixes, only on pages that carry #wc-root ---------- */
+.main-content-container:has(#wc-root){max-width:none!important;padding-left:0!important;padding-right:0!important;padding-bottom:0!important;}
+.main-content-container:has(#wc-root) > .post-body-title,
+.main-content-container:has(#wc-root) > hr{display:none!important;}
+.post-body:has(#wc-root){padding-bottom:0!important;}
+
+/* ---------- Tokens ---------- */
+.wc{
+  --ink:#0E0E0E; --light:#F4F1EC; --yellow:#F5C431; --blue:#5AC8FA;
+  --red:#E5484D; --pencil:#6E6A63; --white:#FFFFFF;
+  --line-dark:rgba(244,241,236,.16); --line-light:rgba(14,14,14,.14);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Jonathan Hand","Caveat",cursive;
+  --ease:cubic-bezier(.6,.05,.3,1);
+  --measure:720px;
+  font-family:var(--sans); font-size:18px; line-height:1.65; color:var(--ink);
+  background:var(--light); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  margin:0; overflow-x:clip;
+}
+.wc *,.wc *::before,.wc *::after{box-sizing:border-box;}
+.wc p{margin:0 0 1.05em; text-wrap:pretty;}
+.wc p:last-child{margin-bottom:0;}
+.wc b,.wc strong{font-weight:800;}
+.wc a{color:inherit;}
+
+/* ---------- Sections: Ink bands open and close, Light paper for reading ---------- */
+.wc-sec{padding:88px 28px; background:var(--light); color:var(--ink);}
+.wc-sec--ink{background:var(--ink); color:var(--light);}
+.wc-wrap{max-width:var(--measure); margin:0 auto;}
+
+.wc-eyebrow{font-size:13px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; margin:0 0 20px; color:var(--pencil);}
+.wc-sec--ink .wc-eyebrow{color:rgba(244,241,236,.62);}
+
+.wc h1,.wc h2,.wc h3{font-family:var(--sans); font-style:italic; font-weight:900; letter-spacing:-.02em; line-height:1.04; margin:0 0 24px; text-wrap:balance; color:inherit;}
+.wc h1{font-size:clamp(44px,7.4vw,80px);}
+.wc h2{font-size:clamp(34px,5vw,52px);}
+.wc h3{font-size:24px; font-style:normal; font-weight:800; letter-spacing:-.01em; line-height:1.2; margin-bottom:10px;}
+.wc-line{display:block;}
+.wc-big{font-size:21px; line-height:1.6;}
+
+/* ---------- Hero ---------- */
+.wc-hero{padding-top:96px; padding-bottom:96px;}
+.wc-hero .wc-big{color:rgba(244,241,236,.86); max-width:600px;}
+.wc-leave{margin-top:44px; border-top:1px solid var(--line-dark); padding-top:22px; display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center;}
+.wc-leave__label{font-size:13px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,241,236,.62); margin-right:6px;}
+.wc-tag{display:inline-block; font-size:14px; font-weight:700; line-height:1; padding:9px 13px; border-radius:4px; background:var(--light); color:var(--ink);}
+
+/* ---------- The marks: highlighter swipes and the red circle ---------- */
+.wc-hl{
+  --hl:var(--yellow);
+  color:var(--ink); padding:0 .14em; margin:0 -.04em;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+  /* two passes of the marker: the second, offset and slightly darker, gives the uneven edge */
+  background-image:
+    linear-gradient(101deg, transparent 0 .8%, rgba(0,0,0,.07) 1.6% 30%, transparent 46% 70%, rgba(0,0,0,.06) 88% 97%, transparent 99%),
+    linear-gradient(99deg, transparent 0 .5%, var(--hl) 2% 97.5%, transparent 99.5%);
+  background-repeat:no-repeat;
+  background-position:0 66%, 0 60%;
+  background-size:100% 46%, 100% 84%;
+  border-radius:.18em .5em .26em .42em;
+}
+.wc-hl--blue{--hl:var(--blue);}
+.wc-sec--ink .wc-hl{color:var(--ink);}
+
+.wc-circled{position:relative; display:inline-block; white-space:nowrap;}
+.wc-circled svg{position:absolute; left:-14%; top:-26%; width:128%; height:152%; overflow:visible; pointer-events:none;}
+.wc-circled path{fill:none; stroke:var(--red); stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke;}
+
+.wc-strike{position:relative; white-space:nowrap;}
+.wc-strike::after{content:""; position:absolute; left:-3%; right:-3%; top:54%; height:3px; background:var(--red); border-radius:2px; transform:rotate(-2deg);}
+
+/* The hand line: one per page, white on Ink, Ink on paper */
+.wc-hand{font-family:var(--hand); font-weight:700; font-size:34px; line-height:1.15; display:inline-block; transform:rotate(-2deg); margin:8px 0 0;}
+.wc-sec--ink .wc-hand{color:var(--white);}
+
+/* Motion. Traces on in his drawing direction. Off entirely for reduced motion. */
+@media (prefers-reduced-motion:no-preference){
+  .wc-hl{background-size:0% 46%, 0% 84%; animation:wc-swipe .8s var(--ease) .35s forwards;}
+  .wc-circled path{stroke-dasharray:1; stroke-dashoffset:1; animation:wc-draw .9s var(--ease) .6s forwards;}
+  .wc-strike::after{transform-origin:left; transform:rotate(-2deg) scaleX(0); animation:wc-strike .5s var(--ease) .5s forwards;}
+  .wc-hero .wc-hl{animation-delay:.55s;}
+  @supports (animation-timeline:view()){
+    .wc-sec:not(.wc-hero) .wc-hl,
+    .wc-sec:not(.wc-hero) .wc-circled path,
+    .wc-sec:not(.wc-hero) .wc-strike::after{animation-timeline:view(); animation-range:entry 30% cover 42%; animation-delay:0s; animation-duration:auto;}
+  }
+}
+@keyframes wc-swipe{to{background-size:100% 46%, 100% 84%;}}
+@keyframes wc-draw{to{stroke-dashoffset:0;}}
+@keyframes wc-strike{to{transform:rotate(-2deg) scaleX(1);}}
+
+/* ---------- Bold lead-in callouts: "Do this now." "Pro tip." ---------- */
+.wc-lead-in{font-weight:800;}
+.wc-aside{border-left:3px solid var(--ink); padding:4px 0 4px 20px; margin:28px 0;}
+.wc-sec--ink .wc-aside{border-color:var(--light);}
+
+/* ---------- Pull quote ---------- */
+.wc-quote{font-style:italic; font-weight:900; font-size:clamp(28px,4.2vw,40px); line-height:1.2; letter-spacing:-.015em; margin:0 0 28px; text-wrap:balance;}
+
+/* ---------- Steps on a dotted rail ---------- */
+.wc-steps{list-style:none; margin:36px 0 8px; padding:0; position:relative;}
+.wc-steps::before{content:""; position:absolute; left:19px; top:22px; bottom:22px; border-left:2px dotted var(--pencil);}
+.wc-step{position:relative; padding:0 0 30px 64px;}
+.wc-step:last-child{padding-bottom:0;}
+.wc-dot{position:absolute; left:0; top:0; width:40px; height:40px; border-radius:50%; background:var(--ink); color:var(--light); display:grid; place-items:center; font-weight:800; font-size:16px; font-style:normal;}
+.wc-step h3{padding-top:6px;}
+.wc-step p{color:#2b2a28;}
+.wc-step--far .wc-dot{background:var(--light); color:var(--ink); border:2px solid var(--ink);}
+
+/* ---------- Ink card on paper ---------- */
+.wc-card{background:var(--ink); color:var(--light); border-radius:16px; padding:32px 30px; margin:36px 0 8px;}
+.wc-card .wc-eyebrow{color:rgba(244,241,236,.62); margin-bottom:12px;}
+.wc-card p{color:rgba(244,241,236,.9);}
+
+/* ---------- A DM thread, built in HTML so it reads on a phone ---------- */
+.wc-thread{background:#161616; border:1px solid var(--line-dark); border-radius:16px; padding:22px 18px 24px; margin:32px 0; display:flex; flex-direction:column; gap:8px;}
+.wc-thread__head{display:flex; align-items:center; gap:10px; padding:0 4px 16px; margin-bottom:8px; border-bottom:1px solid var(--line-dark); font-size:14px; font-weight:700; color:rgba(244,241,236,.7);}
+.wc-thread__av{width:30px; height:30px; border-radius:50%; background:#2a2a2a; display:grid; place-items:center; font-size:13px; color:var(--light);}
+.wc-msg{max-width:82%; padding:11px 16px; border-radius:20px; font-size:17px; line-height:1.4; margin:0;}
+.wc-msg--them{align-self:flex-start; background:#2a2a2a; color:var(--light); border-bottom-left-radius:6px;}
+.wc-msg--me{align-self:flex-end; background:var(--light); color:var(--ink); border-bottom-right-radius:6px;}
+.wc-msg--me + .wc-msg--me{margin-top:-3px;}
+.wc-thread__gap{height:10px;}
+.wc-thread__note{align-self:center; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,241,236,.45); margin:6px 0 2px;}
+
+/* ---------- Do this now: the action panel ---------- */
+.wc-do{background:var(--white); border:2px solid var(--ink); border-radius:16px; padding:34px 30px; margin-top:8px; box-shadow:6px 6px 0 var(--ink);}
+.wc-do__top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:22px;}
+.wc-do__top .wc-eyebrow{margin:0; color:var(--ink);}
+.wc-time{font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; background:var(--ink); color:var(--light); padding:7px 11px; border-radius:4px; line-height:1;}
+.wc-write{border-bottom:2px solid var(--ink); height:44px; margin:6px 0 4px;}
+.wc-write + .wc-write{margin-top:0;}
+.wc-mine{background:var(--light); border-radius:12px; padding:18px 20px; margin:18px 0 6px; font-size:17px;}
+
+/* ---------- The end band ---------- */
+.wc-end{text-align:left; padding-top:96px; padding-bottom:104px;}
+.wc-end h2{font-size:clamp(40px,6.4vw,68px);}
+.wc-next{margin-top:44px; border-top:1px solid var(--line-dark); padding-top:28px; display:grid; gap:14px;}
+.wc-next__btn{display:flex; justify-content:space-between; align-items:center; gap:16px; text-decoration:none!important; background:var(--light); color:var(--ink)!important; border-radius:16px; padding:20px 24px; transition:transform .2s var(--ease), box-shadow .2s var(--ease);}
+.wc-next__btn:hover{transform:translateY(-2px); box-shadow:0 6px 0 rgba(244,241,236,.25);}
+.wc-next__k{font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--pencil); display:block; margin-bottom:2px;}
+.wc-next__t{font-size:21px; font-weight:800; line-height:1.25;}
+.wc-next__arrow{font-size:26px; font-weight:900; flex:none;}
+.wc-next__alt{font-size:16px; color:rgba(244,241,236,.72); margin:4px 0 0;}
+.wc-next__alt a{color:var(--light); font-weight:700;}
+
+/* ---------- Type: serif headlines, punch word, caps labels ---------- */
+.wc{--serif:"Instrument Serif",Georgia,serif; --display:"Clash Display","Inter",sans-serif; --mono:"Cousine",ui-monospace,monospace;}
+/* Serif only on the bookends (the lesson headline and the closing line). Section headings stay Inter Black Italic. */
+.wc h1,.wc .wc-end h2{font-family:var(--serif); font-weight:400; font-style:normal; letter-spacing:-.005em; line-height:1.04;}
+.wc h1{font-size:clamp(52px,8.4vw,92px);}
+.wc .wc-end h2{font-size:clamp(44px,6.4vw,68px);}
+.wc h1 .wc-line + .wc-line,.wc .wc-end h2 .wc-line + .wc-line{font-style:italic;}
+.wc .wc-punch{font-family:var(--sans); font-style:italic; font-weight:900; letter-spacing:-.025em; font-size:.84em;}
+.wc-eyebrow,.wc-leave__label,.wc-next__k,.wc-thread__note{font-family:var(--display)!important; font-weight:600!important; letter-spacing:.2em;}
+.wc-tag,.wc-time{font-family:var(--mono); font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:13px;}
+
+/* ---------- Phone ---------- */
+@media (max-width:600px){
+  .wc{font-size:17px;}
+  .wc-sec{padding:64px 20px;}
+  .wc-hero{padding-top:64px; padding-bottom:64px;}
+  .wc-big{font-size:19px;}
+  .wc h3{font-size:21px;}
+  .wc-do{padding:26px 20px; box-shadow:4px 4px 0 var(--ink);}
+  .wc-card{padding:26px 22px;}
+  .wc-step{padding-left:56px;}
+  .wc-msg{font-size:16px; max-width:88%;}
+  .wc-hand{font-size:30px;}
+  .wc-end{padding-top:72px; padding-bottom:80px;}
+}
+@media (pointer:coarse){ .wc-next__btn{min-height:64px;} }
