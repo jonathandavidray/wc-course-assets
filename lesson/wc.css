@@ -1,4 +1,4 @@
-/* Wealthy Creatives lesson pages. wc.css v0.3 (2026-10-20)
+/* Wealthy Creatives lesson pages. wc.css v0.4 (2026-10-20)
    Brand: v1.5 "Marked Up" colours. Type picked by Jonathan 2026-10-20: Inter body and section headings, Instrument Serif
    on the lesson headline and closing line with one punch word in Inter Black Italic,
    Clash Display caps labels, Cousine caps tags.
@@ -150,6 +150,45 @@
 .wc-next__arrow{font-size:26px; font-weight:900; flex:none;}
 .wc-next__alt{font-size:16px; color:rgba(244,241,236,.72); margin:4px 0 0;}
 .wc-next__alt a{color:var(--light); font-weight:700;}
+
+/* ---------- Components added v0.4: buttons, tool cards, prompt boxes, folds, checklists, video chapters ---------- */
+.wc-btn{display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:var(--light)!important; text-decoration:none!important; font-weight:800; font-size:16px; line-height:1; padding:15px 22px; border-radius:999px; transition:transform .2s var(--ease);}
+.wc-btn:hover{transform:translateY(-2px);}
+.wc-sec--ink .wc-btn{background:var(--light); color:var(--ink)!important;}
+.wc-btns{display:flex; flex-wrap:wrap; gap:12px; margin:24px 0 8px;}
+
+.wc-tools{display:grid; gap:14px; margin:28px 0 8px;}
+.wc-tool{display:flex; justify-content:space-between; align-items:center; gap:16px; text-decoration:none!important; color:var(--ink)!important; background:var(--white); border:2px solid var(--ink); border-radius:16px; padding:20px 22px; transition:transform .2s var(--ease), box-shadow .2s var(--ease);}
+.wc-tool:hover{transform:translateY(-2px); box-shadow:4px 4px 0 var(--ink);}
+.wc-tool__name{display:block; font-size:20px; font-weight:800; line-height:1.25;}
+.wc-tool__what{display:block; font-size:16px; line-height:1.45; color:#3a3936; margin-top:4px;}
+.wc-tool__arrow{font-size:24px; font-weight:900; flex:none;}
+.wc-sec--ink .wc-tool{background:#161616; color:var(--light)!important; border-color:rgba(244,241,236,.4);}
+.wc-sec--ink .wc-tool:hover{box-shadow:4px 4px 0 rgba(244,241,236,.4);}
+.wc-sec--ink .wc-tool__what{color:rgba(244,241,236,.75);}
+
+.wc-prompt{position:relative; background:var(--ink); color:var(--light); border-radius:16px; padding:46px 22px 22px; margin:24px 0;}
+.wc-prompt__label{position:absolute; top:16px; left:22px; font-family:var(--display); font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,241,236,.6);}
+.wc-copy{position:absolute; top:12px; right:12px; font-family:var(--mono); font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; background:var(--yellow); color:var(--ink); border:0; border-radius:999px; padding:8px 14px; cursor:pointer; line-height:1;}
+.wc-prompt pre{margin:0; white-space:pre-wrap; word-break:break-word; font-family:var(--mono); font-size:15px; line-height:1.6; color:var(--light); background:none; border:0; padding:0;}
+.wc-sec--ink .wc-prompt{background:#161616; border:1px solid var(--line-dark);}
+
+.wc-folds{margin:24px 0 8px; border-top:1px solid var(--line-light);}
+.wc-fold{border-bottom:1px solid var(--line-light);}
+.wc-fold summary{cursor:pointer; list-style:none; padding:18px 40px 18px 0; position:relative; font-weight:800; font-size:18px; line-height:1.35;}
+.wc-fold summary::-webkit-details-marker{display:none;}
+.wc-fold summary::after{content:"+"; position:absolute; right:4px; top:12px; font-size:26px; font-weight:400;}
+.wc-fold[open] summary::after{content:"\2212";}
+.wc-fold__body{padding:0 0 20px;}
+.wc-sec--ink .wc-folds,.wc-sec--ink .wc-fold{border-color:var(--line-dark);}
+
+.wc-check{list-style:none; margin:20px 0 8px; padding:0;}
+.wc-check li{position:relative; padding:0 0 12px 36px;}
+.wc-check li::before{content:""; position:absolute; left:0; top:4px; width:20px; height:20px; border:2px solid currentColor; border-radius:4px;}
+
+.wc-chapters{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:2px;}
+.wc-chapters li{display:flex; gap:16px; padding:10px 0; border-bottom:1px solid var(--line-dark);}
+.wc-chapters time{font-family:var(--mono); font-weight:700; font-size:14px; min-width:48px; opacity:.75; padding-top:2px;}
 
 /* ---------- Type: serif headlines, punch word, caps labels ---------- */
 .wc{--serif:"Instrument Serif",Georgia,serif; --display:"Clash Display","Inter",sans-serif; --mono:"Cousine",ui-monospace,monospace;}
