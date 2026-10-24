@@ -1,4 +1,4 @@
-/* Wealthy Creatives lesson pages. wc.css v0.5 "Golden Hour" (2026-10-23)
+/* Wealthy Creatives lesson pages. wc.css v0.6 "Golden Hour" (2026-10-24: steps readable on Dark; v0.5 c9f1ca9 2026-10-23)
    Source: Jonathan's Brand Kit DESIGN.md, ~/Projects/Reels-Editing-Engine/_local/brand-kit/directions/4-mine/DESIGN.md
    (approved for every lesson 2026-10-23). Light #F2F2F1, Dark #0B1014, Muted #A6A898, Marker Blue #5AC8FA on the key word,
    Marker Yellow #F5C431 for numbers and money only, never both on one word. No red: circles and strikes are his pen
@@ -122,6 +122,11 @@
 .wc-step h3{padding-top:6px;}
 .wc-step p{color:#2b2a28;}
 .wc-step--far .wc-dot{background:var(--light); color:var(--ink); border:2px solid var(--ink);}
+/* Steps on Dark (v0.6): light dots, light text, a muted rail */
+.wc-sec--ink .wc-steps::before{border-color:var(--muted);}
+.wc-sec--ink .wc-dot{background:var(--light); color:var(--ink);}
+.wc-sec--ink .wc-step p{color:rgba(242,242,241,.86);}
+.wc-sec--ink .wc-step--far .wc-dot{background:var(--ink); color:var(--light); border-color:var(--light);}
 
 /* ---------- Ink card on paper ---------- */
 .wc-card{background:var(--ink); color:var(--light); border-radius:28px; padding:32px 30px; margin:36px 0 8px;}
